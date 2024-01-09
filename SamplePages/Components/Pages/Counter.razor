@@ -1,0 +1,30 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+@inject SamplePagesClient SamplePagesClient
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
+
+@code {
+
+    public int currentCount = 0;
+
+    public async Task IncrementCount()
+    {
+        currentCount++;
+
+        var input = new SamplePages.GraphQL.UpdateCounterInput { Value = currentCount };
+        var result = await SamplePagesClient.UpdateCounter.ExecuteAsync(1, input);
+        if (result.Errors is null || !result.Errors.Any())
+        {
+            currentCount = result.Data.UpdateCounter.Value;
+            //Navigation.NavigateTo("/counter");
+        }
+    }
+}

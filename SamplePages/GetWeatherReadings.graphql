@@ -1,0 +1,9 @@
+query GetWeatherReadings {
+  weatherReadings {
+    items {
+      Date
+      TemperatureC
+      Summary
+    }
+  }
+}

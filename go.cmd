@@ -1,0 +1,1 @@
+sqlcmd create mssql --database sample --use setup.sql --add-on dab --add-on-use dab-config.json --open vs --open-file ./SamplePages

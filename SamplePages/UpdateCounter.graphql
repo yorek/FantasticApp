@@ -1,0 +1,5 @@
+mutation UpdateCounter($id: Int! $item: UpdateCounterInput!) {
+  updateCounter (id: $id item: $item) {
+    value
+  }
+}

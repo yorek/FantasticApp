@@ -1,0 +1,35 @@
+﻿@page "/Weather"
+@rendermode InteractiveServer
+
+<UseGetWeatherReadings Context="result">
+    <ChildContent>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temp. (C)</th>
+                    <th>Temp. (F)</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                 @foreach (var forecast in result.WeatherReadings!.Items!)
+                {
+                    <tr>
+                        <td>@forecast.Date</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.Summary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </ChildContent>
+    <ErrorContent>
+        Something went wrong ...<br />
+        @result.First().Message
+    </ErrorContent>
+    <LoadingContent>
+        Loading ...
+    </LoadingContent>
+</UseGetWeatherReadings>
