@@ -12,7 +12,19 @@
 <button class="btn btn-primary" @onclick="@IncrementCount">Click me</button>
 
 @code {
+    public async Task GetCounterValue()
+    {
+        var result = await SamplePagesClient.GetCounterValue.ExecuteAsync();
+        if (result.Data?.Counter_by_pk != null)
+        {
+            currentCount = result.Data.Counter_by_pk.Value;
+        }
+    }
 
+    protected override async Task OnInitializedAsync()
+    {
+        await GetCounterValue();
+    }
     public int currentCount = 0;
 
     public async Task IncrementCount()
@@ -23,8 +35,10 @@
         var result = await SamplePagesClient.UpdateCounter.ExecuteAsync(1, input);
         if (result.Errors is null || !result.Errors.Any())
         {
-            currentCount = result.Data.UpdateCounter.Value;
-            //Navigation.NavigateTo("/counter");
+            if (result.Data != null && result.Data.UpdateCounter != null)
+            {
+                currentCount = result.Data.UpdateCounter.Value;
+            }
         }
     }
 }
