@@ -1,0 +1,5 @@
+query GetCounterValue {
+  counter_by_pk(id:1) {
+    value
+  }
+}
