@@ -4,6 +4,8 @@ This is the well known “File | New Project | Blazor Web App” (Weather / Coun
 
 # Instructions
 
+## To set up a local development environment
+
 To use this repo, run... (once https://github.com/microsoft/go-sqlcmd/pull/319 is merged)
 
 ```
@@ -12,3 +14,15 @@ sqlcmd create mssql --use https://github.com/stuartpa/DabBlazorSamplePages.git -
 ```
 
 And press F5 in Visual Studio Code.  This will build the application and launch the web browser.
+
+## To deploy to Azure
+
+```
+sqlcmd deploy --target Azure
+```
+
+## To deploy to Microsoft Fabric
+
+```
+sqlcmd deploy --target Fabric
+```
