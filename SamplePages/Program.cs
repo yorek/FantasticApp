@@ -10,7 +10,7 @@ var containerAppName = Environment.GetEnvironmentVariable("CONTAINER_APP_NAME");
 if (!string.IsNullOrEmpty(containerAppDnsSuffix) && !string.IsNullOrEmpty(containerAppName))
 {
     var parts = containerAppName.Split('-');
-    containerAppName = $"{parts[0]}-dataapibuilder-{parts[2]}";
+    containerAppName = $"{parts[0]}-{"dataapibuilder".Substring(0, 12)}-{parts[2]}";
 
     uri = $"https://{containerAppName}.{containerAppDnsSuffix}/graphql";
 }
