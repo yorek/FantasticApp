@@ -1,8 +1,41 @@
+using System.Diagnostics;
 using SamplePages.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var uri = "http://localhost:5000/graphql";
+var process = new Process
+{
+    StartInfo = new ProcessStartInfo
+    {
+        FileName = "sqlcmd",
+        Arguments = "config current-context",
+        RedirectStandardOutput = true,
+        UseShellExecute = false,
+        CreateNoWindow = true,
+    }
+};
+process.Start();
+var currentContext = process.StandardOutput.ReadToEnd().Trim();
+process.WaitForExit();
+
+// Launch a process to run the command "sqlcmd config get-endpoints --name dab@mssql --value port"
+process = new Process
+{
+    StartInfo = new ProcessStartInfo
+    {
+        FileName = "sqlcmd",
+        Arguments = $"config get-endpoints --name dab@{currentContext} --value port",
+        RedirectStandardOutput = true,
+        UseShellExecute = false,
+        CreateNoWindow = true,
+    }
+};
+
+process.Start();
+var port = process.StandardOutput.ReadToEnd().Trim();
+process.WaitForExit();
+
+var uri = $"http://localhost:{port}/graphql";
  
 var containerAppDnsSuffix = Environment.GetEnvironmentVariable("CONTAINER_APP_ENV_DNS_SUFFIX");
 var containerAppName = Environment.GetEnvironmentVariable("CONTAINER_APP_NAME");
