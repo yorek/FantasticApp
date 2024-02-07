@@ -1,0 +1,11 @@
+databases:
+- database:
+    name: Sample
+    use:
+    - uri: SamplePages\sql\counter.sql
+    - uri: SamplePages\sql\weather.sql
+addons:
+- addon:
+    type: dab
+    use: 
+    - uri: dab-config.json
