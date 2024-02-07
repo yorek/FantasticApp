@@ -3,15 +3,13 @@ using SamplePages.Components;
 
 var builder = WebApplication.CreateBuilder(args);
  
-var uri = GetDabUrl();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services
     .AddSamplePagesClient()
-    .ConfigureHttpClient(client => client.BaseAddress = new Uri(uri));
+    .ConfigureHttpClient(client => client.BaseAddress = new Uri(GetDabUrl()));
 
 var app = builder.Build();
 
