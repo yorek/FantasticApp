@@ -1,6 +1,7 @@
 query GetWeatherReadings {
   weatherReadings {
     items {
+      Id
       Date
       TemperatureC
       Summary

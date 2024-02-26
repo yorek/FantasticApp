@@ -6,9 +6,9 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
+                    <th>Temp. (C)</th>                    
                     <th>Summary</th>
                 </tr>
             </thead>
@@ -16,9 +16,9 @@
                  @foreach (var forecast in result.WeatherReadings!.Items!)
                 {
                     <tr>
+                        <td>@forecast.Id</td>
                         <td>@forecast.Date</td>
-                        <td>@forecast.TemperatureC</td>
-                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.TemperatureC</td>                        
                         <td>@forecast.Summary</td>
                     </tr>
                 }
