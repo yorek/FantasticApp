@@ -1,7 +1,7 @@
 ﻿@page "/counter"
 @rendermode InteractiveServer
 
-@inject SamplePagesClient SamplePagesClient
+@inject FantasticAppClient FantasticAppClient
 
 <PageTitle>Counter</PageTitle>
 
@@ -14,7 +14,7 @@
 @code {
     public async Task GetCounterValue()
     {
-        var result = await SamplePagesClient.GetCounterValue.ExecuteAsync();
+        var result = await FantasticAppClient.GetCounterValue.ExecuteAsync();
         if (result.Data?.Counter_by_pk != null)
         {
             currentCount = result.Data.Counter_by_pk.Value;
@@ -31,8 +31,8 @@
     {
         currentCount++;
 
-        var input = new SamplePages.GraphQL.UpdateCounterInput { Value = currentCount };
-        var result = await SamplePagesClient.UpdateCounter.ExecuteAsync(1, input);
+        var input = new FantasticApp.GraphQL.UpdateCounterInput { Value = currentCount };
+        var result = await FantasticAppClient.UpdateCounter.ExecuteAsync(1, input);
         if (result.Errors is null || !result.Errors.Any())
         {
             if (result.Data != null && result.Data.UpdateCounter != null)

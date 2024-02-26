@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using SamplePages.Components;
+using FantasticApp.Components;
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -8,7 +8,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services
-    .AddSamplePagesClient()
+    .AddFantasticAppClient()    
     .ConfigureHttpClient(client => client.BaseAddress = new Uri(GetDabUrl()));
 
 var app = builder.Build();

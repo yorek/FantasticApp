@@ -2,8 +2,8 @@ databases:
 - database:
     name: Sample
     use:
-    - uri: SamplePages\sql\counter.sql
-    - uri: SamplePages\sql\weather.sql
+    - uri: FantasticApp\sql\counter.sql
+    - uri: FantasticApp\sql\weather.sql
 addons:
 - addon:
     type: dab
