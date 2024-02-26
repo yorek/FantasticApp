@@ -1,5 +1,7 @@
 # The Fantastic App v0.1
 
+![The fanatastic App UI](./_assets/fantastic-app.jpg)
+
 This is the well known “File | New Project | Blazor Web App” (Weather / Counter) but enabled with a database backend via GraphQL (DAB) using Blazor Interactive Auto mode (instead of standard hardcoded const string data
 
 # Instructions
